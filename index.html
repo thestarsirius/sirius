@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shahad — نجمة وحيدة</title>
-<meta name="description" content="مساحة شخصية لشهد: فلسفة، فضاء، علم نفس، أمن سيبراني، شطرنج، ألعاب وكتابة.">
+<meta name="description" content="مساحة شخصية لشهد: فلسفة، فضاء، علم نفس، أمن سيبراني، شطرنج وألعاب.">
 <meta name="theme-color" content="#070a16">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a0f24'/%3E%3Cpath d='M32 8l5 19 19 5-19 5-5 19-5-19-19-5 19-5z' fill='%23c9bfff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,7 +51,7 @@ h1{font-family:var(--mono);font-size:clamp(3.4rem,17vw,8.5rem);font-weight:500;l
 @keyframes dr{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 /* id card */
 .idwrap{display:flex;justify-content:center;perspective:1200px}
-.idcard{width:min(100%,420px);height:270px;position:relative;cursor:pointer;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1);border:0;background:none;color:inherit;font:inherit;text-align:inherit}
+.idcard{width:min(100%,420px);height:300px;position:relative;cursor:pointer;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.2,.8,.2,1);border:0;background:none;color:inherit;font:inherit;text-align:inherit}
 .idcard.flip{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;border-radius:22px;padding:22px;backface-visibility:hidden;-webkit-backface-visibility:hidden;
   background:linear-gradient(145deg,rgba(30,36,72,.85),rgba(12,16,38,.92));border:1px solid var(--line);box-shadow:0 20px 50px -20px #000,inset 0 0 40px rgba(157,140,255,.06);overflow:hidden}
@@ -63,10 +63,12 @@ h1{font-family:var(--mono);font-size:clamp(3.4rem,17vw,8.5rem);font-weight:500;l
 .id-row p{color:var(--silver);font-size:.92rem;font-weight:300;line-height:1.7}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
 .chip{font-size:.74rem;padding:2px 11px;border:1px solid var(--line);border-radius:99px;color:var(--silver)}
+.chip.mbti{font-family:var(--mono);letter-spacing:.12em;color:var(--vio);border-color:rgba(157,140,255,.55);background:rgba(157,140,255,.1)}
 .tap{position:absolute;bottom:12px;right:20px;font-size:.7rem;color:var(--vio);opacity:.8}
-.back dl{margin-top:30px;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:.92rem}
-.back dt{color:var(--vio);font-family:var(--mono);font-size:.75rem;direction:ltr}
-.back dd{color:var(--ivory);font-weight:300}
+.back dl{margin-top:30px;display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.92rem}
+.back dt{color:var(--vio);font-family:var(--mono);font-size:.75rem;direction:ltr;padding-top:4px}
+.back dd{color:var(--ivory);font-weight:300;line-height:1.6}
+.back dd b{font-family:var(--mono);font-weight:700;letter-spacing:.14em;color:var(--vio)}
 /* bento */
 .bento{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .card{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--line);padding:20px;min-height:190px;
@@ -103,20 +105,6 @@ pre.code{font-family:var(--mono);font-size:.72rem;color:#9fe3c4;direction:ltr;te
 .char b{display:block;font-family:var(--mono);font-weight:500;direction:ltr;text-align:right;font-size:1rem;line-height:1.4}
 .char span{font-size:.8rem;color:var(--silver);font-weight:300}
 .char .fn{position:absolute;top:10px;left:12px;font-family:var(--mono);font-size:.62rem;color:var(--silver);opacity:.5;direction:ltr}
-/* writing */
-.notebook{border:1px solid var(--line);border-radius:22px;padding:26px 22px;background:
-  repeating-linear-gradient(transparent 0 35px,rgba(185,194,214,.07) 35px 36px),linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.01));position:relative}
-.notebook::before{content:"";position:absolute;top:0;bottom:0;right:44px;width:1px;background:rgba(157,140,255,.25)}
-.nb-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-right:34px}
-.nb-top small{font-family:var(--mono);color:var(--silver);direction:ltr}
-.tabs{display:flex;gap:6px;flex-wrap:wrap;padding-right:34px;margin-bottom:18px}
-.tabs button{background:none;border:1px solid var(--line);color:var(--silver);font:inherit;font-size:.8rem;padding:2px 14px;border-radius:99px;cursor:pointer;transition:.3s}
-.tabs button.on,.tabs button:hover{background:rgba(157,140,255,.18);color:#fff;border-color:var(--vio)}
-#entry{padding-right:34px;min-height:200px;transition:opacity .35s,transform .35s}
-#entry.out{opacity:0;transform:translateY(8px)}
-#entry h3{font-family:var(--serif);font-size:1.6rem;margin-bottom:8px}
-#entry p{font-family:var(--serif);font-size:1.3rem;line-height:2.1;color:#ece6d8}
-#entry em{display:block;margin-top:14px;font-size:.74rem;color:var(--silver);font-style:normal;opacity:.65;font-family:var(--sans)}
 /* telegram */
 .tg{display:block;text-decoration:none;border-radius:26px;padding:34px 24px;text-align:center;position:relative;overflow:hidden;border:1px solid rgba(157,140,255,.35);
   background:radial-gradient(500px 220px at 50% 0,rgba(111,92,214,.35),transparent 70%),rgba(14,21,48,.8);transition:.5s}
@@ -151,7 +139,7 @@ footer{text-align:center;padding:36px 20px 50px;color:var(--silver);font-size:.8
 <div id="glow" aria-hidden="true"></div>
 
 <nav aria-label="التنقل">
-  <a href="#hero">بداية</a><a href="#me">أنا</a><a href="#worlds">عوالمي</a><a href="#play">لعب</a><a href="#notes">شذرات</a>
+  <a href="#hero">بداية</a><a href="#me">أنا</a><a href="#worlds">عوالمي</a><a href="#play">لعب</a>
 </nav>
 
 <main>
@@ -191,12 +179,13 @@ footer{text-align:center;padding:36px 20px 50px;color:var(--silver);font-size:.8
           </svg>
           <div><h3>Shahad</h3><p>كاتبة فلسفية، مهتمة بالتقنية والأمن السيبراني وعلم النفس والفلك.</p></div>
         </div>
-        <div class="chips"><span class="chip">فلسفة</span><span class="chip">فلك</span><span class="chip">سايبر</span><span class="chip">شطرنج</span></div>
+        <div class="chips"><span class="chip mbti">INFJ</span><span class="chip">فلسفة</span><span class="chip">فلك</span><span class="chip">سايبر</span><span class="chip">شطرنج</span></div>
         <span class="tap">اضغطي للقلب ↻</span>
       </div>
       <div class="face back">
         <span class="no">NOTES · ✦</span>
         <dl>
+          <dt>TYPE</dt><dd><b>INFJ</b> — هادئة، ترى ما وراء الأشياء وتبحث عن معناها</dd>
           <dt>ORBIT</dt><dd>بين السؤال والسؤال الذي يليه</dd>
           <dt>FUEL</dt><dd>فضول، وليل هادئ</dd>
           <dt>READING</dt><dd>نيتشه، وأشياء تقلق الطمأنينة</dd>
@@ -287,9 +276,9 @@ footer{text-align:center;padding:36px 20px 50px;color:var(--silver);font-size:.8
 
 <!-- GAMES + ANIME -->
 <section id="play"><div class="wrap">
-  <div class="eyebrow rv">PLAYSTATION · 003</div>
+  <div class="eyebrow rv">GAMES · 003</div>
   <h2 class="rv">عوالم أعود إليها</h2>
-  <p class="sub rv">ألعاب سوني التي تركت في ذاكرتي ضوءًا وضبابًا وظلالًا.</p>
+  <p class="sub rv">ألعاب تركت في ذاكرتي ضوءًا وضبابًا وظلالًا.</p>
   <div class="games">
 
     <article class="card game grain rv">
@@ -337,18 +326,6 @@ footer{text-align:center;padding:36px 20px 50px;color:var(--silver);font-size:.8
   </div>
 </div></section>
 
-<!-- WRITINGS -->
-<section id="notes"><div class="wrap">
-  <div class="eyebrow rv">NOTEBOOK · 005</div>
-  <h2 class="rv">شذرات</h2>
-  <p class="sub rv">دفتر صغير لما لا يُقال بصوت عالٍ.</p>
-  <div class="notebook rv">
-    <div class="nb-top"><small id="count"></small></div>
-    <div class="tabs" id="tabs" role="tablist"></div>
-    <div id="entry" aria-live="polite"></div>
-  </div>
-</div></section>
-
 <!-- TELEGRAM -->
 <section style="padding-top:20px"><div class="wrap">
   <a class="tg rv" href="https://t.me/thesingularstar" target="_blank" rel="noopener noreferrer">
@@ -363,14 +340,6 @@ footer{text-align:center;padding:36px 20px 50px;color:var(--silver);font-size:.8
 <footer>© <span id="yr"></span> Shahad · تحت سماء واحدة ✦</footer>
 
 <script>
-/* ============ محتوى الكتابات: عدّلي هنا فقط ============ */
-const WRITINGS = [
-  { title: "نص تجريبي ١", body: "هذا مكان لأول شذرة. استبدليه بما كتبتِه أنتِ.", note: "محتوى مؤقت" },
-  { title: "نص تجريبي ٢", body: "مساحة ثانية للتأمل. أضيفي أي عدد من النصوص في هذه المصفوفة.", note: "محتوى مؤقت" },
-  { title: "نص تجريبي ٣", body: "كل عنصر يظهر هنا كتبويب جديد تلقائيًا.", note: "محتوى مؤقت" }
-];
-/* ======================================================= */
-
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.getElementById('yr').textContent = new Date().getFullYear();
 
@@ -450,26 +419,6 @@ idc.addEventListener('click', () => idc.classList.toggle('flip'));
   let i = 0, buf = [];
   function next(){ buf.push(lines[i % lines.length]); if(buf.length > 5) buf.shift(); el.textContent = buf.join('\n'); i++; }
   next(); if(!reduce) setInterval(next, 1700); else { for(let j=0;j<4;j++) next(); }
-})();
-
-/* --- writings --- */
-(function(){
-  const tabs = document.getElementById('tabs'), entry = document.getElementById('entry'), cnt = document.getElementById('count');
-  function show(n){
-    entry.classList.add('out');
-    setTimeout(() => {
-      const w = WRITINGS[n];
-      entry.innerHTML = '';
-      const h = document.createElement('h3'), p = document.createElement('p'), e = document.createElement('em');
-      h.textContent = w.title; p.textContent = w.body; if(w.note) e.textContent = w.note;
-      entry.append(h, p, e);
-      cnt.textContent = String(n+1).padStart(2,'0') + ' / ' + String(WRITINGS.length).padStart(2,'0');
-      [...tabs.children].forEach((b,i) => { b.classList.toggle('on', i===n); b.setAttribute('aria-selected', i===n); });
-      entry.classList.remove('out');
-    }, reduce ? 0 : 300);
-  }
-  WRITINGS.forEach((w,i) => { const b = document.createElement('button'); b.textContent = w.title; b.setAttribute('role','tab'); b.onclick = () => show(i); tabs.appendChild(b); });
-  show(0);
 })();
 
 /* --- reveal on scroll --- */
