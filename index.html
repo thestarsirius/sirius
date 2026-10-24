@@ -11,26 +11,30 @@
 <style>
 :root{--bg:#050507;--ink:#ece9e2;--dim:#a19d95;--acc:#d8d5ce;--line:rgba(236,233,226,.26)}
 *{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;overflow-x:hidden}
 body{min-height:100svh;padding:16px 14px 44px;color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-size:1.05rem;line-height:1.6;overflow-x:hidden;
   background:radial-gradient(900px 500px at 50% 112%,#25252c 0,transparent 70%),radial-gradient(700px 400px at 50% -10%,#16161c 0,transparent 70%),var(--bg)}
 :focus-visible{outline:2px solid var(--acc);outline-offset:3px}
 #glow{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 
 /* the page: a pointed-arch window */
-.page{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:80px 18px 34px;text-align:center;
+.page{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:56px 18px 34px;text-align:center;
   background:rgba(8,8,11,.58);border:1px solid var(--line);border-radius:220px 220px 10px 10px/150px 150px 10px 10px;
   box-shadow:0 24px 60px -34px rgba(255,255,255,.14);animation:in 1.6s ease both}
 .page::before{content:"";position:absolute;inset:8px;border:1px solid var(--line);border-radius:inherit;pointer-events:none}
 @keyframes in{from{opacity:0;transform:translateY(14px)}}
-.star{display:inline-block;color:#e9e9ee;font-size:1.2rem;animation:pulse 5s ease-in-out infinite}
-@keyframes pulse{50%{transform:scale(1.25) rotate(20deg);opacity:.55}}
+.hero{position:relative;padding-top:96px}
 h1{font-family:'UnifrakturCook','Cormorant Garamond',serif;font-size:clamp(3.2rem,16vw,4.4rem);font-weight:700;line-height:1.1}
 .line{font-style:italic;font-size:1.25rem;color:var(--dim);margin:2px 0 10px}
 .bio{max-width:400px;margin:0 auto;font-size:1.02rem;color:var(--dim)}
 .orn{display:flex;align-items:center;gap:12px;margin:22px 8px 16px;color:var(--acc)}
 .orn::before,.orn::after{content:"";flex:1;border-top:1px solid var(--line)}
 h2{font-family:'Cinzel',serif;font-weight:400;font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;color:var(--acc);margin-bottom:16px}
+
+/* the owl */
+.owl{position:absolute;left:0;top:0;width:170px;z-index:3;cursor:pointer;visibility:hidden;will-change:transform;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.owl svg{display:block;width:100%;height:auto;overflow:visible}
 
 /* portraits in arched frames */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 12px;padding:0 6px}
@@ -57,15 +61,41 @@ h2{font-family:'Cinzel',serif;font-weight:400;font-size:.74rem;letter-spacing:.3
 #lb .nm{font-size:.95rem;margin-top:18px}
 #lb .w{font-size:1.05rem}
 
-@media(prefers-reduced-motion:reduce){.page,.star,#lb.on{animation:none}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.page,#lb.on{animation:none}*{transition:none!important}}
 </style>
 </head>
 <body>
 <canvas id="glow" aria-hidden="true"></canvas>
 
 <main class="page">
-  <div class="star">✦</div>
-  <h1>Shahad</h1>
+  <div class="hero" id="hero">
+    <div class="owl" id="owl" role="button" tabindex="0" aria-label="Owl">
+      <svg viewBox="0 0 200 130" aria-hidden="true">
+        <defs>
+          <g id="wg">
+            <path d="M78 56 C60 38 28 34 4 52 Q10 58 8 66 Q18 62 20 72 Q28 66 32 76 Q40 70 46 80 Q56 74 62 82 Q72 76 80 84 L82 62Z" fill="#15151b" stroke="#d8d5ce" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M72 62C52 52 28 52 12 58M74 69C54 62 34 64 20 71" fill="none" stroke="#6d6d78" stroke-width="1"/>
+          </g>
+        </defs>
+        <g fill="none" stroke="#d8d5ce" stroke-width="2" stroke-linecap="round"><path d="M90 118L84 127M90 118V128M90 118L96 127M110 118L104 127M110 118V128M110 118L116 127"/></g>
+        <ellipse cx="100" cy="88" rx="27" ry="31" fill="#15151b" stroke="#d8d5ce" stroke-width="1.2"/>
+        <path d="M86 86q7 6 14 0t14 0M82 97q9 6 18 0t18 0M88 108q12 6 24 0" fill="none" stroke="#6d6d78" stroke-width="1.1"/>
+        <g id="wl"><use href="#wg"/></g>
+        <g id="wr"><use href="#wg" transform="translate(200 0) scale(-1 1)"/></g>
+        <g id="head">
+          <path d="M72 42L76 14L95 31ZM128 42L124 14L105 31Z" fill="#15151b" stroke="#d8d5ce" stroke-width="1.2" stroke-linejoin="round"/>
+          <ellipse cx="100" cy="53" rx="32" ry="27" fill="#15151b" stroke="#d8d5ce" stroke-width="1.2"/>
+          <circle cx="85" cy="53" r="13.5" fill="#e9e6df"/><circle cx="115" cy="53" r="13.5" fill="#e9e6df"/>
+          <g id="eL"><circle cx="85" cy="53" r="8" fill="#8d8a82"/><circle cx="85" cy="53" r="4.6" fill="#0a0a0c"/><circle cx="83" cy="51" r="1.5" fill="#fff"/></g>
+          <g id="eR"><circle cx="115" cy="53" r="8" fill="#8d8a82"/><circle cx="115" cy="53" r="4.6" fill="#0a0a0c"/><circle cx="113" cy="51" r="1.5" fill="#fff"/></g>
+          <g id="lL"><circle cx="85" cy="53" r="14" fill="#15151b"/><path d="M76 59Q85 65 94 59" fill="none" stroke="#d8d5ce" stroke-width="1.3" stroke-linecap="round"/></g>
+          <g id="lR"><circle cx="115" cy="53" r="14" fill="#15151b"/><path d="M106 59Q115 65 124 59" fill="none" stroke="#d8d5ce" stroke-width="1.3" stroke-linecap="round"/></g>
+          <path d="M96 58h8l-4 11z" fill="#cfc9bb"/>
+        </g>
+      </svg>
+    </div>
+    <h1 id="name" aria-label="Shahad"><span aria-hidden="true">S</span><span aria-hidden="true">h</span><span aria-hidden="true">a</span><span aria-hidden="true">h</span><span aria-hidden="true">a</span><span aria-hidden="true">d</span></h1>
+  </div>
   <p class="line">𝘮𝘢𝘥𝘦 𝘰𝘧 𝘴𝘪𝘭𝘦𝘯𝘤𝘦 𝘢𝘯𝘥 𝘥𝘳𝘦𝘢𝘮𝘴</p>
   <p class="bio">Cybersecurity specialist, software developer, philosophical writer and author, reader, interested in psychology and astronomy</p>
 
@@ -220,6 +250,105 @@ CHARACTERS.forEach(o => document.getElementById('chars').append(tile(o)));
   if(!reduce) document.addEventListener('visibilitychange', () => { run = !document.hidden; if(run) requestAnimationFrame(frame); });
   size();
   if(!reduce) requestAnimationFrame(frame);
+})();
+
+/* ===== the owl: flies in, lands on the name, looks around and blinks ===== */
+(function(){
+  const PERCH = 15;   /* raise/lower the owl on the name: bigger number = sits lower */
+  const FEET = 127, SCALE = 170 / 200;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = id => document.getElementById(id);
+  const hero = $('hero'), owl = $('owl'), letter = document.querySelectorAll('#name span')[3];
+  const wl = $('wl'), wr = $('wr'), head = $('head'), eL = $('eL'), eR = $('eR'), lL = $('lL'), lR = $('lR');
+
+  function place(){
+    const hr = hero.getBoundingClientRect(), r = letter.getBoundingClientRect();
+    owl.style.left = (r.left - hr.left + r.width / 2 - 85) + 'px';
+    owl.style.top = (r.top - hr.top + PERCH - FEET * SCALE) + 'px';
+  }
+  function wings(a, s){
+    wl.setAttribute('transform', `translate(78 62) rotate(${a.toFixed(1)}) scale(${s.toFixed(2)}) translate(-78 -62)`);
+    wr.setAttribute('transform', `translate(122 62) rotate(${(-a).toFixed(1)}) scale(${s.toFixed(2)}) translate(-122 -62)`);
+  }
+  function eyes(gx, gy){ const t = `translate(${gx.toFixed(2)} ${gy.toFixed(2)})`; eL.setAttribute('transform', t); eR.setAttribute('transform', t); }
+  function lids(s){ s = Math.max(.001, Math.min(1, s)); const t = `translate(0 39) scale(1 ${s.toFixed(3)}) translate(0 -39)`; lL.setAttribute('transform', t); lR.setAttribute('transform', t); }
+  function tilt(a){ head.setAttribute('transform', `rotate(${a.toFixed(2)} 100 76)`); }
+
+  function cr(p, u){
+    const n = p.length - 1, f = Math.min(u, .9999) * n, i = Math.floor(f), t = f - i;
+    const p0 = p[Math.max(i - 1, 0)], p1 = p[i], p2 = p[i + 1], p3 = p[Math.min(i + 2, n)];
+    const q = (a, b, c, d) => .5 * ((2 * b) + (-a + c) * t + (2 * a - 5 * b + 4 * c - d) * t * t + (-a + 3 * b - 3 * c + d) * t * t * t);
+    return [q(p0[0], p1[0], p2[0], p3[0]), q(p0[1], p1[1], p2[1], p3[1])];
+  }
+  function center(){ owl.style.transform = ''; const r = owl.getBoundingClientRect(); return [r.left + r.width / 2, r.top + r.height / 2]; }
+  let P = [0, 0];
+  function introPts(){ P = center(); const W = innerWidth; return [[W + 90, P[1] - 160], [W * .72, P[1] + 110], [W * .28, P[1] + 70], [W * .15, P[1] - 70], [P[0] + 10, P[1] - 80], [P[0], P[1]]]; }
+  function loopPts(){ P = center(); const W = innerWidth, x = P[0], y = P[1];
+    return [[x, y], [x + 30, y - 80], [W * .8, y - 50], [W * .88, y + 130], [W * .5, y + 170], [W * .12, y + 70], [W * .2, y - 90], [x - 15, y - 80], [x, y]]; }
+
+  let mode = 'wait', fl = null, phase = 0, last = 0, nextFlight = 0;
+  let gx = 0, gy = 0, tgx = 0, tgy = 0, tl = 0, ttl = 0, nextGaze = 0, blinkAt = 1800, blinkT0 = -1, dbl = false;
+  let mx = -1, my = -1, mt = -99999;
+
+  function startFlight(pts, dur){
+    fl = {pts, dur, t0: performance.now()}; mode = 'fly';
+    owl.style.transform = `translate(${(pts[0][0] - P[0]).toFixed(1)}px,${(pts[0][1] - P[1]).toFixed(1)}px)`;
+    owl.style.visibility = 'visible';
+  }
+  function blink(t){
+    if(blinkT0 < 0){ if(t > blinkAt) blinkT0 = t; return 0; }
+    const p = (t - blinkT0) / 240;
+    if(p >= 1){ blinkT0 = -1; if(dbl){ dbl = false; blinkAt = t + 140; } else { blinkAt = t + 2000 + Math.random() * 4000; dbl = Math.random() < .2; } return 0; }
+    return Math.min(1, Math.sin(Math.PI * p) * 1.5);
+  }
+  function gaze(t){
+    if(t - mt < 2500 && mx >= 0){
+      const r = owl.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height * .4;
+      tgx = Math.max(-1, Math.min(1, (mx - cx) / 90)) * 3.4; tgy = Math.max(-1, Math.min(1, (my - cy) / 90)) * 2.6; ttl = tgx * 1.6;
+    } else if(t > nextGaze){
+      const sp = [[0,0],[-3.4,0],[3.4,0],[-2.6,-2],[2.6,-2],[0,2.4],[-3.4,1.5],[3.4,1.5]], s = sp[Math.floor(Math.random() * sp.length)];
+      tgx = s[0]; tgy = s[1]; ttl = s[0] * 1.8; nextGaze = t + 1100 + Math.random() * 2600;
+    }
+    gx += (tgx - gx) * .12; gy += (tgy - gy) * .12; tl += (ttl - tl) * .05;
+    eyes(gx, gy); tilt(tl);
+  }
+
+  function tick(t){
+    const dt = Math.min(t - last, 50); last = t;
+    gaze(t); lids(blink(t));
+    if(mode === 'fly'){
+      const u = (t - fl.t0) / fl.dur;
+      if(u >= 1){ mode = 'perch'; owl.style.transform = ''; wings(-82, .5); nextFlight = t + 22000 + Math.random() * 18000; }
+      else {
+        const e = -(Math.cos(Math.PI * u) - 1) / 2, q = cr(fl.pts, e), q2 = cr(fl.pts, Math.min(e + .01, 1));
+        const lf = Math.min(1, Math.max(0, (e - .88) / .12)), f = Math.max(0, Math.min(1, e / .06, (1 - e) / .06));
+        phase += dt * (.021 - .011 * lf);
+        wings(f * (-6 + 34 * Math.sin(phase)) + (1 - f) * -82, .5 + .5 * f);
+        const dx = q[0] - P[0], dy = q[1] - P[1] + Math.sin(phase) * 3 * f;
+        const bank = Math.max(-14, Math.min(14, (q2[0] - q[0]) * .35)), sc = 1 + .3 * Math.sin(Math.PI * e);
+        owl.style.transform = `translate(${dx.toFixed(1)}px,${dy.toFixed(1)}px) rotate(${bank.toFixed(1)}deg) scale(${sc.toFixed(3)})`;
+      }
+    } else if(mode === 'perch' && t > nextFlight){
+      const r = owl.getBoundingClientRect();
+      if(r.bottom > 0 && r.top < innerHeight) startFlight(loopPts(), 8000); else nextFlight = t + 8000;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function boot(){
+    place(); wings(-82, .5); eyes(0, 0); lids(0); tilt(0);
+    if(reduce){ owl.style.visibility = 'visible'; return; }
+    requestAnimationFrame(t => { last = t; blinkAt = t + 1800; nextGaze = t + 1000; requestAnimationFrame(tick); });
+    setTimeout(() => startFlight(introPts(), 5200), 700);
+  }
+  const fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  Promise.race([fontsReady, new Promise(r => setTimeout(r, 2000))]).then(boot);
+
+  addEventListener('resize', place);
+  addEventListener('pointermove', e => { mx = e.clientX; my = e.clientY; mt = performance.now(); });
+  const go = () => { if(mode === 'perch') startFlight(loopPts(), 7500); };
+  owl.addEventListener('click', go);
+  owl.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
 })();
 </script>
 </body>
